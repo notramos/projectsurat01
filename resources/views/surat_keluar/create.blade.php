@@ -1,8 +1,8 @@
 @extends('layouts.main')
 
 @section('container')
-    <h2>Tambah Surat Masuk</h2>
-    <form action="{{ route('surat_masuk.store') }}" method="POST">
+    <h2>Tambah Surat Keluar</h2>
+    <form action="{{ route('surat_keluar.store') }}" method="POST">
         @csrf
         <div class="form-group">
             <label for="nomor_surat">Nomor Surat</label>
@@ -36,10 +36,10 @@
     
         <div class="form-group">
             <label>Pengirim</label>
-            <input type="text" name="pengirim" class="form-control   @error('pengirim')
+            <input type="text" name="penerima" class="form-control   @error('penerima')
                 is-invalid
-            @enderror" value="{{ old('pengirim') }}" >
-            @error('alamat')
+            @enderror" value="{{ old('penerima') }}" >
+            @error('penerima')
              <span class="invalid-feedback">{{ $message }}</span>
             @enderror
         </div>
@@ -61,15 +61,13 @@
         
         <div class="form-group mb-3">
             <label>Perihal</label>
-            <textarea name="perihal" id="perihal" class="form-control  @error('pengirim')
+            <textarea name="perihal" id="perihal" class="form-control  @error('perihal')
                 is-invalid
             @enderror">{{ old('perihal') }}</textarea>
-            @error('alamat')
+            @error('perihal')
             <span class="invalid-feedback">{{ $message }}</span>
            @enderror
         </div>
-        
         <button type="submit" class="btn btn-success">Simpan</button>
     </form>
-    
 @endsection

@@ -15,10 +15,12 @@ return new class extends Migration
     {
         Schema::create('surat_keluar', function (Blueprint $table) {
             $table->id();
-            $table->string('nomor_surat');
+            $table->string('nomor_surat')->unique();
+            $table->foreignId('categories_id');
             $table->date('tanggal_surat');
+            $table->string('alamat');
             $table->string('penerima');
-            $table->string('perihal');
+            $table->text('perihal');
             $table->timestamps();
         });
     }
@@ -30,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('surat_keluars');
+        Schema::dropIfExists('surat_keluar');
     }
 };
