@@ -170,6 +170,31 @@ header.navbar button {
   }
 }
 
+ /* Sidebar styles */
+ #sidebar {
+  width: 250px; /* Tentukan lebar sidebar */
+  min-height: 100vh; /* Pastikan sidebar memenuhi tinggi layar */
+  overflow-y: auto; /* Tambahkan scrollbar jika konten terlalu panjang */
+}
+#sidebar.collapsed {
+width: 0;
+}
+
+#sidebar .nav-link {
+  font-size: 1rem; /* Perbesar ukuran font */
+  padding: 10px 20px; /* Tambahkan ruang di sekitar teks */
+  text-align: left; /* Pastikan teks rata kiri *//* Pastikan elemen menggunakan seluruh lebar */
+}
+
+
+#main-content {
+transition: margin-left 0.3s ease-in-out;
+
+}
+
+#main-content.collapsed {
+margin-left: 0;
+}
 
 
 

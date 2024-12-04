@@ -1,5 +1,3 @@
-
-
 <div id="sidebar" class="bg-dark text-light p-3">
   <ul class="nav flex-column">
     <li class="nav-item">

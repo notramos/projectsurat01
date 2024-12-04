@@ -21,7 +21,7 @@ use App\Http\Controllers\ProfileController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// Guest
 Route::middleware(['guest'])->group(function () {
     Route::get('/', function () {
         return view('welcome');
@@ -36,11 +36,11 @@ Route::middleware(['guest'])->group(function () {
     Route::post('/login', [LoginController::class, 'auth'])->name('login');
 });
 
+//auth
 Route::middleware(['auth'])->group(function () {
     Route::post('/logout', [LoginController::class, 'logout']);
     Route::resource('surat_masuk', SuratMasukController::class);
     Route::resource('surat_keluar', SuratKeluarController::class);
-   
     Route::resource('dashboard', DashboardController::class);
     Route::get('/export/surat-masuk', [ExportController::class, 'exportSuratMasuk'])->name('export.suratMasuk');
     Route::get('/export/surat-keluar', [ExportController::class, 'exportSuratKeluar'])->name('export.suratKeluar');
@@ -48,7 +48,7 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
 });
 
-
+//admin
 Route::middleware(['admin'])->group(function(){
     Route::resource('category', CategoryController::class);
 });

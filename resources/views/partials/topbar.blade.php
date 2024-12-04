@@ -1,7 +1,7 @@
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
     <div class="sidebar-header d-flex flex-column align-items-center px-5 py-4">
       <!-- Sidebar Toggle Button -->
-      <a href="/dashboard" class="text-decoration-none text-light fw-bold me-3"><img src="img/logo.png" alt="Logo Kominfo" class="me-2" style="height: 30px;">Sistem Informasi</a>
+      <a href="/dashboard" class="text-decoration-none text-light fw-bold me-3"><img src="/img/logo.png" alt="Logo" class="me-2" style="height: 40px;">Sistem Informasi</a>
     </div>
     <!-- User Dropdown -->
     <div class="dropdown ms-auto me-3 mb-2">
@@ -18,4 +18,4 @@
         </form>
       </ul>
     </div>
-  </header>
+</header>

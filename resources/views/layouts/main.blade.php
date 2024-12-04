@@ -5,49 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <title>Sistem Aplikasi Surat - Kominfo</title>
-
-
-    
-
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    
     <!-- Custom styles for this template -->
     <link href="/css/dashboard.css" rel="stylesheet">
-    <script src="https://cdn.ckeditor.com/ckeditor5/38.1.0/classic/ckeditor.js"></script>
 
     {{-- ckeditor --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/2.0.0/trix.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/2.0.0/trix.js"></script>
 
-    <style>
-      /* Sidebar styles */
-      #sidebar {
-    width: 250px; /* Tentukan lebar sidebar */
-    min-height: 100vh; /* Pastikan sidebar memenuhi tinggi layar */
-    overflow-y: auto; /* Tambahkan scrollbar jika konten terlalu panjang */
-  }
-  #sidebar.collapsed {
-  width: 0;
-}
-
-  #sidebar .nav-link {
-    font-size: 1rem; /* Perbesar ukuran font */
-    padding: 10px 20px; /* Tambahkan ruang di sekitar teks */
-    text-align: left; /* Pastikan teks rata kiri *//* Pastikan elemen menggunakan seluruh lebar */
-  }
-
-
-  #main-content {
-  transition: margin-left 0.3s ease-in-out;
- 
-}
-
-#main-content.collapsed {
-  margin-left: 0;
-}
-    </style>
   </head>
   <body>
     
