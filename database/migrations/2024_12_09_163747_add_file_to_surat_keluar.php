@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('categories', function (Blueprint $table) {
-            $table->softDeletes(); // Menambahkan kolom deleted_at
+        Schema::table('surat_keluar', function (Blueprint $table) {
+            $table->string('file_path')->nullable();
         });
     }
 
@@ -25,8 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('categories', function (Blueprint $table) {
-            $table->dropSoftDeletes(); // Menghapus kolom deleted_at
+        Schema::table('surat_keluar', function (Blueprint $table) {
+            $table->dropColumn('file_path');
         });
     }
 };

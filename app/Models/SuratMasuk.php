@@ -13,8 +13,4 @@ class SuratMasuk extends Model
     // Kolom-kolom yang dapat diisi secara massal
     protected $guarded = ['id'];
     
-    public function category()
-   {
-    return $this->belongsTo(Category::class , 'categories_id','id');
-   }
 }

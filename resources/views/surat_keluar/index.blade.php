@@ -12,9 +12,7 @@
                 <tr class="table">
                     <th>Nomor Surat</th>
                     <th>Tanggal Surat</th>
-                    <th>Penerima</th>
-                    <th>Alamat</th>
-                    <th>Kode Arsip</th>
+                    <th>File</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -23,9 +21,24 @@
                     <tr>
                         <td>{{ $surat->nomor_surat }}</td>
                         <td>{{ $surat->tanggal_surat }}</td>
-                        <td>{{ $surat->penerima }}</td>
-                        <td>{{ $surat->alamat }}</td>
-                        <td>{{ $surat->category['name'] ?? 'Tidak Ada Kategori' }}</td>
+                        <td>
+                          @if($surat->file_path)
+                          @php
+                            $extension = pathinfo($surat->file_path, PATHINFO_EXTENSION);
+                          @endphp
+                          @if(in_array($extension, ['jpg', 'jpeg', 'png', 'gif']))
+                            <a href="{{ Storage::url($surat->file_path) }}" target="_blank">
+                              <img src="{{ Storage::url($surat->file_path) }}" alt="Gambar" style="max-height: 50px;">
+                            </a>
+                          @elseif($extension === 'pdf')
+                            <a href="{{ Storage::url($surat->file_path) }}" target="_blank">Lihat PDF</a>
+                          @else
+                            <a href="{{ Storage::url($surat->file_path) }}" target="_blank">Download File</a>
+                          @endif
+                        @else
+                          Tidak Ada File
+                        @endif
+                        </td>
                         <td>
                             <a href="{{ route('surat_keluar.show',$surat->id) }}" 
                                 class="badge bg-info" 
@@ -67,7 +80,7 @@
   </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
+  document.addEventListener('DOMContentLoaded', function () {
   const modalSuratKeluar = document.getElementById('modalSuratKeluar');
   const modalBody = modalSuratKeluar.querySelector('.modal-body');
 

@@ -12,15 +12,13 @@ class SuratMasukController extends Controller
 {
     public function index()
     {
-        $suratMasuk = SuratMasuk::with('category')->get();
+        $suratMasuk = SuratMasuk::all();
         return view('surat_masuk.index', compact('suratMasuk'));
     }
 
     public function create()
     {
-        return view('surat_masuk.create',[
-            'categories'=>Category::all()
-        ]);
+        return view('surat_masuk.create');
     }
 
     public function store(Request $request)
@@ -29,20 +27,20 @@ class SuratMasukController extends Controller
         $request->validate([
             'nomor_surat' => 'required|numeric|unique:surat_masuk',
             'tanggal_surat' => 'required|date',
-            'alamat' => 'required|string|max:255',
-            'pengirim' => 'required|string|max:255',
-            'categories_id' => 'required|exists:categories,id',
             'perihal' => 'required|string',
         ]);
     
-        SuratMasuk::create($request->all());
+        SuratMasuk::create([
+            'nomor_surat' => $request->nomor_surat,
+            'tanggal_surat' => $request->tanggal_surat,
+            'perihal'=> $request->perihal, // Simpan path file
+        ]);
          return redirect()->route('surat_masuk.index')->with('success', 'Surat masuk berhasil disimpan.');
      
     }
 
     public function edit($id)
     {
-        $categories = Category::all();
         $suratMasuk = SuratMasuk::findOrFail($id);
         return view('surat_masuk.edit', compact('suratMasuk','categories'));
     }
@@ -66,7 +64,6 @@ class SuratMasukController extends Controller
         $surat = SuratMasuk::with('category')->findOrFail($id);
         return response()->json([
             'tanggal' => $surat->tanggal_surat,
-            'kode_arsip' => $surat->category->name,
             'isi' => $surat->perihal,
         ]);
     }

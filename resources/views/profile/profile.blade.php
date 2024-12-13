@@ -33,7 +33,7 @@
 
         <div class="mb-3">
             <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Leave blank to keep current password">
+            <input type="password" class="form-control" id="password" name="password" placeholder="biarkan kosong jika tidak ingin mengubah password">
             @error('password')
                 <div class="text-danger">{{ $message }}</div>
             @enderror

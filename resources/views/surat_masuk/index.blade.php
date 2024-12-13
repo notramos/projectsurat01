@@ -19,9 +19,6 @@
                 <tr class="table">
                     <th>Nomor Surat</th>
                     <th>Tanggal Surat</th>
-                    <th>Pengirim</th>
-                    <th>Alamat</th>
-                    <th>Kode Arsip</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -30,9 +27,6 @@
                     <tr>
                         <td>{{ $surat->nomor_surat }}</td>
                         <td>{{ $surat->tanggal_surat }}</td>
-                        <td>{{ $surat->pengirim }}</td>
-                        <td>{{ $surat->alamat }}</td>
-                        <td>{{ $surat->category->name ?? 'Tidak Ada Kategori' }}</td>
                         <td>
                             <a href="{{ route('surat_masuk.show',$surat->id) }}" 
                                     class="badge bg-info" 

@@ -17,10 +17,7 @@ return new class extends Migration
         Schema::create('surat_masuk', function (Blueprint $table) {
             $table->id();
             $table->string('nomor_surat')->unique();
-            $table->foreignId('categories_id');
-            $table->string('alamat');
             $table->date('tanggal_surat');
-            $table->string('pengirim');
             $table->text('perihal');
             $table->timestamps();
         });

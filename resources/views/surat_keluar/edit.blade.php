@@ -5,18 +5,9 @@
     <h2>Edit Surat Keluar</h2>
 
     <!-- Tampilkan pesan error jika ada -->
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
+   
     <!-- Form Edit Surat Keluar -->
-    <form action="{{ route('surat_keluar.update', $suratKeluar->id) }}" method="POST">
+    <form action="{{ route('surat_keluar.update', $suratKeluar->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT') <!-- Metode PUT untuk update -->
 
@@ -40,40 +31,6 @@
             @enderror
         </div>
     
-        <div class="form-group">
-            <label>Alamat</label>
-            <input type="text" name="alamat" class="form-control  @error('alamat')
-                is-invalid
-            @enderror" value="{{ old('alamat',$suratKeluar->alamat) }}" >
-            @error('alamat')
-            <span class="invalid-feedback">{{ $message }}</span>
-        @enderror
-        </div>
-    
-        <div class="form-group">
-            <label>Pengirim</label>
-            <input type="text" name="penerima" class="form-control   @error('penerima')
-                is-invalid
-            @enderror" value="{{ old('penerima',$suratKeluar->penerima) }}" >
-            @error('penerima')
-             <span class="invalid-feedback">{{ $message }}</span>
-            @enderror
-        </div>
-    
-        <div class="form-group">
-            <label for="file">Kode Arsip</label>
-            <select class="form-control @error('categories_id') is-invalid @enderror" name="categories_id">
-                <option value="" disabled {{ old('categories_id',$suratKeluar->categories_id) == null ? 'selected' : '' }}>Pilih Kode Arsip</option>
-                @foreach ($categories as $category)
-                    <option value="{{ $category->id }}" {{ old('categories_id',$suratKeluar->categories_id) == $category->id ? 'selected' : '' }}>
-                        {{ $category->name }}
-                    </option>
-                @endforeach
-            </select>
-            @error('categories_id')
-                <span class="invalid-feedback">{{ $message }}</span>
-            @enderror
-        </div>    
         
         <div class="form-group mb-3">
             <label>Perihal</label>
@@ -83,6 +40,16 @@
             @error('perihal')
             <span class="invalid-feedback">{{ $message }}</span>
            @enderror
+        </div>
+
+        <div class="mb-3">
+            <label for="file" class="form-label">File</label>
+            @if($suratKeluar->file_path)
+                <p>File saat ini: 
+                    <a href="{{ Storage::url($suratKeluar->file_path) }}" target="_blank">Lihat File</a>
+                </p>
+            @endif
+            <input type="file" class="form-control" id="file" name="file">
         </div>
         <button type="submit" class="btn btn-primary mt-3">Update Surat</button>
     </form>

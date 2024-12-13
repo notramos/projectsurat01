@@ -23,41 +23,6 @@
                 <span class="invalid-feedback">{{ $message }}</span>
             @enderror
         </div>
-    
-        <div class="form-group">
-            <label>Alamat</label>
-            <input type="text" name="alamat" class="form-control  @error('alamat')
-                is-invalid
-            @enderror" value="{{ old('alamat') }}" >
-            @error('alamat')
-            <span class="invalid-feedback">{{ $message }}</span>
-        @enderror
-        </div>
-    
-        <div class="form-group">
-            <label>Pengirim</label>
-            <input type="text" name="pengirim" class="form-control   @error('pengirim')
-                is-invalid
-            @enderror" value="{{ old('pengirim') }}" >
-            @error('alamat')
-             <span class="invalid-feedback">{{ $message }}</span>
-            @enderror
-        </div>
-    
-        <div class="form-group">
-            <label for="file">Kode Arsip</label>
-            <select class="form-control @error('categories_id') is-invalid @enderror" name="categories_id">
-                <option value="" disabled {{ old('categories_id') == null ? 'selected' : '' }}>Pilih Kode Arsip</option>
-                @foreach ($categories as $category)
-                    <option value="{{ $category->id }}" {{ old('categories_id') == $category->id ? 'selected' : '' }}>
-                        {{ $category->name }}
-                    </option>
-                @endforeach
-            </select>
-            @error('categories_id')
-                <span class="invalid-feedback">{{ $message }}</span>
-            @enderror
-        </div>    
         
         <div class="form-group mb-3">
             <label>Perihal</label>

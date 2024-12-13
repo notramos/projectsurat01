@@ -1,13 +1,18 @@
 @extends('layouts.main')
 
 @section('container')
+@if (session('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert" id="flash-message">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
 <div class="container mt-2">
   <!-- Header -->
   <div class="row mb-3 ">
     <h1>Dashboard</h1>
   </div>
 </div>
-
   <!-- Content -->
   <div class="row">
       <!-- Table 1 -->
@@ -78,4 +83,18 @@
       </div>
   </div>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+      const flashMessage = document.getElementById('flash-message');
+      if (flashMessage) {
+          // Durasi flash message dalam milidetik (misalnya 5 detik)
+          setTimeout(() => {
+              flashMessage.style.transition = "opacity 0.5s ease";
+              flashMessage.style.opacity = "0"; // Buat elemen memudar
+              setTimeout(() => flashMessage.remove(), 500); // Hapus elemen setelah animasi
+          }, 5000); // 5000 ms = 5 detik
+      }
+  });
+</script>
 @endsection
